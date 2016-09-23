@@ -23,7 +23,7 @@
     <string name="no_network_connection_toast">No network connection found</string>
     <string name="open_camera">Camera</string>
     <string name="dialog_message">Vi trenger dette for å laste ned bilder!</string>
-    <string name="dialog_title">Får vi lov til å bruke internett?</string>
+    <string name="dialog_title">Får vi lov til å lagre?</string>
     <string name="positive_button">OK</string>
     <string name="negative_button">CANCEL</string>
     <string name="title_activity_login">Sign in</string>
