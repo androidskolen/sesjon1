@@ -16,13 +16,21 @@
 
 package com.example.android.displayingbitmaps.ui;
 
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.ActivityOptions;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -57,11 +65,13 @@ import com.example.android.displayingbitmaps.util.Utils;
 public class ImageGridFragment extends Fragment implements AdapterView.OnItemClickListener {
     private static final String TAG = "ImageGridFragment";
     private static final String IMAGE_CACHE_DIR = "thumbs";
+    private static final int REQUEST_WRITE_EXTERNAL_STORAGE = 123;
 
     private int mImageThumbSize;
     private int mImageThumbSpacing;
     private ImageAdapter mAdapter;
     private ImageFetcher mImageFetcher;
+    private boolean hasShownRationale;
 
     /**
      * Empty constructor as per the Fragment documentation
@@ -202,21 +212,8 @@ public class ImageGridFragment extends Fragment implements AdapterView.OnItemCli
                 Toast.makeText(getActivity(), R.string.clear_cache_complete_toast,
                         Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.open_camera:
-                startCameraActivity();
-                return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * Starter en ny aktivitet
-     */
-    private void startCameraActivity() {
-
-        // Implementer denne metoden. Husk å håndtere permissions for camera.
-        android.util.Log.d(TAG, "Starting camera activity");
-
     }
 
     /**
