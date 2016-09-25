@@ -34,24 +34,28 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
 
         EditText passwordView = (EditText) findViewById(R.id.password);
-        passwordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    gotoImageGridActivity();
-                    return true;
+        if (passwordView != null) {
+            passwordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                @Override
+                public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
+                    if (id == R.id.login || id == EditorInfo.IME_NULL) {
+                        gotoImageGridActivity();
+                        return true;
+                    }
+                    return false;
                 }
-                return false;
-            }
-        });
+            });
+        }
 
         Button emailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        emailSignInButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                gotoImageGridActivity();
-            }
-        });
+        if (emailSignInButton != null) {
+            emailSignInButton.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    gotoImageGridActivity();
+                }
+            });
+        }
     }
 
 
