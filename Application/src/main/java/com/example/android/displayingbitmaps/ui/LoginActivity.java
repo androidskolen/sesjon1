@@ -3,7 +3,6 @@ package com.example.android.displayingbitmaps.ui;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.view.KeyEvent;
 import android.view.View;
@@ -54,12 +53,12 @@ public class LoginActivity extends Activity {
 
 
     /**
-     * Implementer denne metoden. Først må det sjekkes at man har rettigheter til å bruke internett.
-     * Dersom man ikke har det, skal man kalle showWhyWeNeedInternetPermissionDialog(). Dialogen vil kalle
+     * Implementer denne metoden. Først må det sjekkes at man har rettigheter til å lagre til eksternt minne.
+     * Dersom man ikke har det, skal man kalle showExternalStoragePermissionRationale. Dialogen vil kalle
      * gotoImageGridActivity igjen når dialogen lukkes.
-     *
+     * <p>
      * Når man har vist informasjon om hvorfor man trenger rettigheter, skal man be om rettighetene.
-     *
+     * <p>
      * Når man har fått rettigheter, skal man lage en intent som åpner ImageGridActivity.
      */
     private void gotoImageGridActivity() {
@@ -71,7 +70,7 @@ public class LoginActivity extends Activity {
      * Viser en dialog med forklaring til hvorfor man trenger internet permission. Kaller gotoImageGridActivity
      * dersom brukeren trykke "OK".
      */
-    private void showExternalStoragePermissionDialog() {
+    private void showExternalStoragePermissionRationale() {
         hasShownRationale = true;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
